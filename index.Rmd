@@ -34,8 +34,6 @@ Y\: \sim\:  SN(\xi,\,\omega^2,\,\alpha).
 \end{equation}
 $$
 $\xi$ is called location, $\omega$ scale and $\alpha$ shape. In case $\alpha=0$ we get $Y\: \sim\: N(\xi,\,\omega^2)$ a normal distribution with mean $\xi$ and standard deviation $\omega$.
-<br \>
-For more information see [The Skew-Normal Probability Distribution](http://azzalini.stat.unipd.it/SN/).
 
 --- 
 
@@ -79,13 +77,8 @@ lines(x,y, lty=2, col="red")
 
 ---
 
-```{r, echo = FALSE}
-shinyAppDir(
-  system.file("./shinyApp", package="shiny"),
-  options=list(
-    width="100%", height=700
-  )
-)
-```
+## References
 
+For more information skew normals distributions and the sn R package see [The Skew-Normal Probability Distribution](http://azzalini.stat.unipd.it/SN/).
+The source code
 
