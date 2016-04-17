@@ -50,28 +50,16 @@
   </hgroup>
   <article data-timings="">
     <p>Given a random variable \(X\), which has the probability denisity function
-\[
-\begin{equation}
-f(x) = 2 \phi(x)\ \Phi(\alpha x)
-\end{equation}
-\]
+\[f(x) = 2 \phi(x)\ \Phi(\alpha x)\]
 where \(\alpha\) is a number and
-\[
-\begin{equation}
-\phi(x)= \exp(-x^2/2)/\sqrt{2\pi} ,
-   \qquad \Phi(\alpha x) = \int_{-\infty}^{\alpha  x}\phi(t)\,dt
-\end{equation}
-\]
-Set \(\begin{equation}Y \: =\: \xi\, +\, \omega\, X\end{equation}\) and \(Y\) is said to 
+\[\phi(x)= \exp(-x^2/2)/\sqrt{2\pi} ,
+   \qquad \Phi(\alpha x) = \int_{-\infty}^{\alpha  x}\phi(t)\,dt\]</p>
+
+<p>Set \(\begin{equation}Y \: =\: \xi\, +\, \omega\, X\end{equation}\) and \(Y\) is said to 
 have a skewed normal distribution with parameters \(\xi\), \(\omega\) and \(\alpha\)
-\[
-\begin{equation}
-Y\: \sim\:  SN(\xi,\,\omega^2,\,\alpha).
-\end{equation}
-\]
-\(\xi\) is called location, \(\omega\) scale and \(\alpha\) shape. In case \(\alpha=0\) we get \(Y\: \sim\: N(\xi,\,\omega^2)\) a normal distribution with mean \(\xi\) and standard deviation \(\omega\).
-<br \>
-For more information see <a href="http://azzalini.stat.unipd.it/SN/">The Skew-Normal Probability Distribution</a>.</p>
+\[Y\: \sim\:  SN(\xi,\,\omega^2,\,\alpha).\]</p>
+
+<p>\(\xi\) is called location, \(\omega\) scale and \(\alpha\) shape. </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -79,14 +67,20 @@ For more information see <a href="http://azzalini.stat.unipd.it/SN/">The Skew-No
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Example of a left skewed distribution</h2>
+    <h2>Characteristics of a skewed normal distribution</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>## Package &#39;sn&#39;, 1.3-0 (2015-11-11). Type &#39;help(SN)&#39; for summary information.
-## The package redefines function &#39;sd&#39; but its usual working is unchanged.
-</code></pre>
+    <p>Let \(Y\) be a random variable which has a skewed normal distribution
+\[Y\: \sim\:  SN(\xi,\,\omega^2,\,\alpha).\]</p>
 
-<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
+<p>The mean value of \(Y\) is: \[E\{Y\} = \xi+\omega\:\sqrt{2/\pi}\,\delta\]</p>
+
+<p>The variance of \(Y\) is: \[VAR\{Y\}= \omega^2\;(1-2\,\delta^2/\pi)\]</p>
+
+<p>Here \(\delta\) ist defined as: \(\delta=\alpha/\sqrt{1+\alpha^2}\)</p>
+
+<p>From this it can easily be seen that for \(\alpha = 0\) \(Y\) symetric normal distributed:
+\[Y\: \sim\: N(\xi,\,\omega^2)\]</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -97,16 +91,47 @@ For more information see <a href="http://azzalini.stat.unipd.it/SN/">The Skew-No
     <h2>Example of a right skewed distribution</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
 
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">library(sn)
+location = 0
+scale = 1
+shape = 4
+
+set.seed(1234)
+data = rsn(1000, xi=location, omega=scale, 
+           alpha = shape)
+hist(data, breaks=20, probability=TRUE, 
+   main=&quot;location=0; scale=1; shape=4&quot;,
+   xlab=&quot;sample data&quot;, ylab=&quot;probability&quot;)
+lines(density(data), lwd=2)
+x = seq(-20, 20, by=0.01)
+y = dsn(x, xi=location, omega=scale, 
+        alpha=shape)
+lines(x, y, lwd=2, col=&quot;red&quot;)
+</code></pre>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>References</h2>
+  </hgroup>
   <article data-timings="">
-    <pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;shinyAppDir&quot;
-</code></pre>
+    <p>For more information on skewed normal distributions and the sn R package see <a href="http://azzalini.stat.unipd.it/SN/">The Skew-Normal Probability Distribution</a> by Adelchi Azzalini.</p>
+
+<p>The source code of this presentation can be found on <a href="https://github.com/rubberbandman62/skewedDistributionsPitch/tree/gh-pages">github</a>.</p>
+
+<p>A Shiny App to demonstrate the effect of the three parameters \(\xi\), \(\omega\) and \(\alpha\) can be found on <a href="https://rubberbandman62.shinyapps.io/skewedDistributions/">shinyapps.io</a>.</p>
+
+<p>The source code of this Shiny App is also stored on <a href="https://github.com/rubberbandman62/skewedDistributions">github</a>.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -124,7 +149,7 @@ For more information see <a href="http://azzalini.stat.unipd.it/SN/">The Skew-No
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Example of a left skewed distribution'>
+        data-slide=2 title='Characteristics of a skewed normal distribution'>
          2
       </a>
     </li>
@@ -136,7 +161,7 @@ For more information see <a href="http://azzalini.stat.unipd.it/SN/">The Skew-No
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='NA'>
+        data-slide=4 title='References'>
          4
       </a>
     </li>
