@@ -41,6 +41,12 @@ For more information see [The Skew-Normal Probability Distribution](http://azzal
 
 ## Example of a left skewed distribution
 
+
+```
+## Package 'sn', 1.3-0 (2015-11-11). Type 'help(SN)' for summary information.
+## The package redefines function 'sd' but its usual working is unchanged.
+```
+
 ![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
 
 --- 
@@ -53,7 +59,7 @@ For more information see [The Skew-Normal Probability Distribution](http://azzal
 
 
 ```
-## Error in shinyAppDir(system.file("./shinyApp", package = "shiny"), options = list(width = "100%", : No Shiny application exists at the path ""
+## Error in eval(expr, envir, enclos): could not find function "shinyAppDir"
 ```
 
 
